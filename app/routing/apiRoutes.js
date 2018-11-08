@@ -8,29 +8,37 @@ var router = express.Router();
 var scoreMods = [1, 0.5, 1, 0.3, 2, 1.5, 1.2, 1, 1, 1];
 
 //retrieves all the friends available
-router.get('/api/friends', function(req, res) {
-    res.send(friends);
+router.get('/friends', function(req, res) {
+    res.json(friends);
 });
 
 //finds a compatible friend based on the questions asked
-router.post('/api/friends', function(req, res) {
+router.post('/friends', function(req, res) {
     let user = req.body;
+    console.log(req.body);
     let bff = {};
-    let bffSum = 0;
+    let bffSum = 100;
 
     for (var i = 0; i < friends.length; i++){
         var friend = friends[i];
+        var scores = friend.scores;
         var sum = 0;
-        for (var j = 0; j < friend.scores; j++) {
-            sum += (Math.abs(friend.scores[j]-user.scores[j])*scoreMods[j]);
+        console.log(scores.length);
+        console.log(user.scores.length);
+        for (var j = 0; j < scores.length; j++){
+            var num = (Math.abs(parseInt(scores[j])-parseInt(user.scores[j]))*scoreMods[j]);
+            sum += num;
+            // console.log(num);
         }
         //lowest sum is best friend
+        console.log(sum + '  ' + bffSum);
         if (sum < bffSum) {
             bff = friend;
             bffSum = sum;
         }
     }
     friends.push(user);
+    console.log(bff);
     res.json(bff);
 });
 

@@ -20,7 +20,7 @@ friends = [{
   }, {
     name: 'Greg',
     photo: 'https://i.pinimg.com/originals/a4/ec/61/a4ec61c54592208fd201175ba39a86bc.png',
-    scores:[4,5,4,5,4,5,4,5,4,5,4]
+    scores:[5,4,5,4,5,4,5,4,5,4]
   }, {
     name: 'Steven',
     photo: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/22/Steven_Universe.png/220px-Steven_Universe.png',
@@ -28,9 +28,9 @@ friends = [{
   }, {
     name: 'Geoff',
     photo: 'http://chemistry.cornell.edu/sites/chem/files/Geoff_Coates_People_Page_Photo.jpg',
-    scores: [4,5,3,1,1,1,4,3,5,4,3]
+    scores: [4,5,3,1,1,1,4,3,5,4]
   }
 ]
 
 
-module.exports({Friends:friends})
+module.exports = {friends};
